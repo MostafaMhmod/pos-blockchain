@@ -31,3 +31,5 @@ archive.zip
 
 # macOS
 .DS_Store
+explorer/node_modules
+explorer/build
