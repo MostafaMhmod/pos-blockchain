@@ -104,6 +104,13 @@ class Blockchain:
                 if transaction.equals(block_transaction):
                     return True
         return False
+    
+    def get_transaction(self, transaction_hash):
+        for block in self.blocks:
+            for block_transaction in block.transactions:
+                if block_transaction.signature==transaction_hash:
+                    return block_transaction
+        return False
 
     def forger_valid(self, block):
         forger_public_key = self.pos.forger(block.last_hash)

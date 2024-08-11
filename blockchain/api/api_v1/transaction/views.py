@@ -26,3 +26,9 @@ async def create_transaction(request: Request):
     transaction = BlockchainUtils.decode(payload["transaction"])
     node.handle_transaction(transaction)
     return {"message": "Received transaction"}
+
+
+@router.get("/{transaction_hash}", name="View transaction")
+async def transaction(request: Request, transaction_hash: str):
+    node = request.app.state.node
+    return node.blockchain.get_transaction(transaction_hash).to_dict()

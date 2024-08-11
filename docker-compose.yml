@@ -78,5 +78,24 @@ services:
     networks:
       - host
 
+  # node_five:
+  #   build: ./blockchain
+  #   command: python run_node.py --ip=0.0.0.0 --node_port=8013 --api_port=8053
+  #   entrypoint: ['/usr/src/node/entrypoint.sh']
+  #   volumes:
+  #     - ./blockchain:/usr/src/node
+  #   environment:
+  #     - USE_DOCKER=True
+  #     - DOCKER_NODE_CONTAINER_NAMES=node_one,node_two,node_three
+  #     - DOCKER_NODE_PORTS=8010,8011,8012,8013
+  #   labels:
+  #     com.datadoghq.ad.logs: '[{"service": "blockchain_node", "source": "python"}]'
+  #   ports:
+  #     - 8013:8013
+  #     - 8053:8053
+  #   depends_on:
+  #     - node_one
+  #   networks:
+  #     - host
 networks:
   host:
