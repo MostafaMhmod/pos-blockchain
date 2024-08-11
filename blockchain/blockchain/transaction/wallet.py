@@ -31,9 +31,6 @@ class Wallet:
     def signature_valid(data, signature, public_key_string):
         if public_key_string == 'COINBASE':
             return True
-        logging.info(f"Data received: {data}")
-        logging.info(f"Signature received: {signature}")
-        logging.info(f"public_key_string received: {public_key_string}")
 
         signature_bytes = decode_hex(signature)
         signature = keys.Signature(signature_bytes)
@@ -42,7 +39,6 @@ class Wallet:
         public_key = keys.PublicKey(decode_hex(public_key_string))
 
         is_valid = public_key.verify_msg(data_hash, signature)
-        logging.info(f"Is signature valid: {is_valid}")
         return is_valid
 
     def public_key_string(self):
